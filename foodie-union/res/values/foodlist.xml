@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="foodlist">
+     <item>孜然牛肉盖饭	14元/份</item>
+     <item>小炒肉盖饭	10元/份</item>
+  </string-array>
+</resources>

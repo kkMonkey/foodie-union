@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Foodie-Union</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="login">登录</string>
+    <string name="thereturn">返回</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="register">注册</string>
+    <string name="password2">重复密码</string>
+    <string name="ordername">菜名</string>
+    <string name="orderinitialvalue">0</string>
+    <string name="orderpage_name">商品名称</string>
+    <string name="orderpage_sum">数量</string>
+    <string name="orderpage_clear">清空</string>
+    <string name="orderpage_watch">查看订单</string>
+    <string name="orderpage_confirm">确定</string>
+    <string name="chat_main_send">发送</string>
+
+</resources>

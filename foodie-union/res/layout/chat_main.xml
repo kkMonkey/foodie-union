@@ -35,7 +35,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/chat_send_button_bg"
             android:text="@string/chat_main_send"
-	        android:textSize="20sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/chat_editmessage"

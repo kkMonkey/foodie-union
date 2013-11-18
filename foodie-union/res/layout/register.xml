@@ -3,16 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+    
     <LinearLayout
-        android:id="@+id/layout1"
+        android:id="@+id/register_layout4"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="168dp" >
+        android:layout_centerVertical="true">
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/register_textview"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:text="@string/password2" />
+
+        <EditText
+            android:id="@+id/register_password2"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/register_layout1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/register_layout4"
+        android:layout_marginBottom="30dp">
+
+        <TextView
+            android:id="@+id/register_textview1"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:text="@string/password" />
@@ -29,14 +51,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout2"
+        android:id="@+id/register_layout2"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="108dp" >
+        android:layout_above="@id/register_layout1"
+        android:layout_marginBottom="30dp">
 
         <TextView
-            android:id="@+id/TextView2"
+            android:id="@+id/register_textview2"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:text="@string/username" />
@@ -46,36 +69,17 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout4"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="228dp" >
-
-        <TextView
-            android:id="@+id/TextView01"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:text="@string/password2" />
-
-        <EditText
-            android:id="@+id/register_password2"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="textPassword" />
+            android:ems="10" 
+            android:inputType="textMultiLine"/>"
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/layout3"
+        android:id="@+id/register_layout3"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="288dp" >
+        android:layout_below="@id/register_layout4"
+        android:layout_marginTop="30dp">
 
         <Button
             android:id="@+id/register_register"

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.foodie_union.container.ChatMsgEntity;
+import com.foodie_union.entity.ChatMsgEntity;
 
 public class ChatAdapter extends BaseAdapter {
 

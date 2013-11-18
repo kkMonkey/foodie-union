@@ -5,13 +5,13 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/layout1"
+        android:id="@+id/login_layout1"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/login_textview1"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:text="@string/password" />
@@ -28,15 +28,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout2"
+        android:id="@+id/login_layout2"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_above="@id/layout1"
+        android:layout_above="@id/login_layout1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp" >
 
         <TextView
-            android:id="@+id/TextView2"
+            android:id="@+id/login_textview2"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:text="@string/username" />
@@ -51,11 +51,11 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/layout3"
+        android:id="@+id/login_layout3"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/layout1" 
+        android:layout_below="@id/login_layout1" 
         android:layout_marginTop="30dp">
 
         <Button

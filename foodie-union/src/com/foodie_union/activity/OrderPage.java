@@ -12,7 +12,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.DigitsKeyListener;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -30,6 +29,7 @@ public class OrderPage extends Activity {
 	private Button watchButton;
 	private Button confirmButton;
 	private OrderAdapter adapter;
+	private String shopKeeperName;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,6 +39,11 @@ public class OrderPage extends Activity {
 		clearButton = (Button) findViewById(R.id.orderpage_clear);
 		watchButton = (Button) findViewById(R.id.orderpage_watch);
 		confirmButton = (Button) findViewById(R.id.orderpage_confirm);
+		
+		Intent intent=new Intent();
+		double shopKeeperLon=intent.getIntExtra("shopKeeperLon", 0);
+		double shopKeeperLat=intent.getIntExtra("shopKeeperLat", 0);
+		shopKeeperName="我是店家";
 
 		adapter = new OrderAdapter(getData(), this);
 		listView.setAdapter(adapter);
@@ -64,11 +69,11 @@ public class OrderPage extends Activity {
 					inputServer.setKeyListener(numericOnlyListener);
 					AlertDialog.Builder builder = new AlertDialog.Builder(
 							OrderPage.this);
-					builder.setTitle("Server")
+					builder.setTitle("订单")
 							.setIcon(android.R.drawable.ic_dialog_info)
 							.setView(inputServer)
-							.setNegativeButton("Cancel", null);
-					builder.setPositiveButton("Ok",
+							.setNegativeButton("取消", null);
+					builder.setPositiveButton("确定",
 							new DialogInterface.OnClickListener() {
 
 								public void onClick(DialogInterface dialog,
@@ -231,14 +236,41 @@ public class OrderPage extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			for (int i = 0; i < listView.getCount(); i++) {
+			StringBuilder stringBuilder = new StringBuilder();
+			for (int i = 0; i < adapter.getCount(); i++) {
 				if (OrderAdapter.isSelected.get(i)) {
-					Log.i("TAG", "--onClick --"
-							+ OrderAdapter.getMyItem(i).get("orderName"));
+					Map<String, Object> map = OrderAdapter.getMyItem(i);
+					stringBuilder.append(map.get("orderName"));
+					stringBuilder.append("--->");
+					stringBuilder.append(map.get("count"));
+					stringBuilder.append("份\n");
 				}
 			}
-			Intent intent = new Intent(OrderPage.this, ChatMain.class);
-			startActivity(intent);
+			if (stringBuilder.length() < 5) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						OrderPage.this);
+				builder.setTitle("订单")
+						.setIcon(android.R.drawable.ic_dialog_info)
+						.setMessage("您的订单为空, 点击确定将进入与店家的聊天界面")
+						.setNegativeButton("取消", null);
+				builder.setPositiveButton("确定",
+						new DialogInterface.OnClickListener() {
+
+							public void onClick(DialogInterface dialog,
+									int which) {
+								Intent intent = new Intent(OrderPage.this, ChatMain.class);
+								intent.putExtra("herName", shopKeeperName);
+								intent.putExtra("myOrder", "");
+								startActivity(intent);
+							}
+						});
+				builder.show();
+			} else {
+				Intent intent = new Intent(OrderPage.this, ChatMain.class);
+				intent.putExtra("herName", shopKeeperName);
+				intent.putExtra("myOrder", stringBuilder.toString());
+				startActivity(intent);
+			}
 		}
 	};
 

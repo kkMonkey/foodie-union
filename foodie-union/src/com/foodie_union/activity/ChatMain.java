@@ -20,6 +20,7 @@ import org.jivesoftware.smack.packet.Packet;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -33,7 +34,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.foodie_union.constant.Constants;
-import com.foodie_union.container.ChatMsgEntity;
+import com.foodie_union.entity.ChatMsgEntity;
 
 public class ChatMain extends Activity {
 	// chat_main
@@ -47,6 +48,7 @@ public class ChatMain extends Activity {
 	private ChatAdapter adapter;
 	private List<ChatMsgEntity> mDataArrays;
 	private InputMethodManager manager;
+	private String herName;
 
 	// kkloyy@kkloyy-Dell-System-Inspiron-N4110
 	// nzp9dotjpm0v1zd
@@ -55,6 +57,9 @@ public class ChatMain extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.chat_main);
+
+		Intent intent = getIntent();
+		herName = intent.getStringExtra("herName");
 
 		chat_window = (ListView) findViewById(R.id.chat_window);
 		chat_editmessage = (EditText) findViewById(R.id.chat_editmessage);

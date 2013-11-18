@@ -1,3 +1,4 @@
+
 package com.foodie_union.activity;
 
 import java.util.HashMap;
@@ -49,7 +50,7 @@ public class MapActivity extends Activity {
 		mBMapMan = new BMapManager(getApplication());
 		mBMapMan.init("DAe898e05ef75f7019f834b183c19d6d", null);
 		// 注锟解：锟斤拷锟斤拷锟斤拷锟斤拷setContentView前锟斤拷始锟斤拷BMapManager锟斤拷锟襟，凤拷锟斤拷岜拷锟�
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.mappage);
 		mMapView = (MapView) findViewById(R.id.bmapsView);
 		mMapView.setBuiltInZoomControls(true);
 
@@ -155,16 +156,18 @@ public class MapActivity extends Activity {
 
 			protected boolean onTap(int index) {
 				// 锟节此达拷锟斤拷item锟斤拷锟斤拷录锟�
-				System.out.println("item onTap: " + index);
-				Intent intent = new Intent(MapActivity.this, OrderPage.class);
-				startActivity(intent);
-				return true;
+				return false;
 			}
 
 			public boolean onTap(GeoPoint pt, MapView mapView) {
 				// 锟节此达拷锟斤拷MapView锟侥碉拷锟斤拷录锟斤拷锟斤拷锟斤拷锟斤拷锟�true时
 				super.onTap(pt, mapView);
-				return false;
+
+				Intent intent = new Intent(MapActivity.this, OrderPage.class);
+				intent.putExtra("shopKeeperLon", pt.getLongitudeE6());
+				intent.putExtra("shopKeeperLat", pt.getLatitudeE6());
+				startActivity(intent);
+				return true;
 			}
 			// 锟斤拷2.1.1 锟斤拷始锟斤拷使锟斤拷 add/remove 锟斤拷锟斤拷overlay ,
 			// 锟斤拷锟斤拷锟斤拷写锟斤拷锟铰接匡拷
@@ -181,11 +184,11 @@ public class MapActivity extends Activity {
 		 */
 		// 准锟斤拷要锟斤拷拥锟絆verlay
 		// (24.82619651446854, 102.84932613372803)
-		double mLat1 = 24.82619;
-		double mLon1 = 102.84932;
+		double mLat1 = 24.82419;
+		double mLon1 = 102.84532;
 		double mLat2 = 24.82617;
-		double mLon2 = 102.84934;
-		double mLat3 = 24.82615;
+		double mLon2 = 102.84734;
+		double mLat3 = 24.82815;
 		double mLon3 = 102.84937;
 		// 锟矫革拷木锟轿筹拷裙锟斤拷锟紾eoPoint锟斤拷锟斤拷位锟斤拷微锟斤拷 (锟斤拷 * 1E6)
 		GeoPoint p1 = new GeoPoint((int) (mLat1 * 1E6), (int) (mLon1 * 1E6));

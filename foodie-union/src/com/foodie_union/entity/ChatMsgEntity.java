@@ -1,4 +1,4 @@
-package com.foodie_union.container;
+package com.foodie_union.entity;
 
 public class ChatMsgEntity {
 	private String username;

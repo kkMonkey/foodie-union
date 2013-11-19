@@ -5,18 +5,29 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/register_textview1"
+        android:id="@+id/orderpage_textview1"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:text="@string/chat_shopname"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/orderpage_textview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:text="@string/orderpage_name" />
+        android:layout_below="@id/orderpage_textview1"
+        android:layout_marginLeft="60dp"
+        android:text="@string/chat_ordername" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="40dp"
+        android:id="@+id/orderpage_textview3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="@string/orderpage_sum" />
+        android:layout_below="@id/orderpage_textview1"
+        android:text="@string/chat_count" />
 
     <Button
         android:id="@+id/orderpage_clear"
@@ -54,14 +65,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/orderpage_confirm"
-        android:layout_below="@id/register_textview1" >
+        android:layout_below="@id/orderpage_textview2" >
     </ListView>
 
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_above="@id/orderpage_listView"
-        android:layout_toLeftOf="@id/textView2"
+        android:layout_toLeftOf="@id/orderpage_textview2"
         android:background="#ff00ff" >
     </View>
 

@@ -81,9 +81,9 @@ public class Login extends Activity {
 						Message message = Message.obtain();
 						message.obj = "正在连接服务器";
 						toastHandler.sendMessage(message);
-						connectNetwork.connect();
 						if (connectNetwork.isConnected())
 							break;
+						connectNetwork = new ConnectNetwork();
 						message = Message.obtain();
 						message.obj = "连接失败，稍后自动重连";
 						toastHandler.sendMessage(message);

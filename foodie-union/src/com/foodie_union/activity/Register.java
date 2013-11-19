@@ -93,9 +93,9 @@ public class Register extends Activity {
 						Message message = Message.obtain();
 						message.obj = "正在连接服务器";
 						toastHandler.sendMessage(message);
+						connectNetwork = new ConnectNetwork();
 						if (connection.isConnected())
 							break;
-						connectNetwork.connect();
 						message = Message.obtain();
 						message.obj = "连接失败，稍后自动重连";
 						toastHandler.sendMessage(message);

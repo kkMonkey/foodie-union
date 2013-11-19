@@ -36,6 +36,7 @@ import android.widget.Toast;
 import com.foodie_union.constant.Constants;
 import com.foodie_union.entity.ChatMsgEntity;
 
+@SuppressLint("SimpleDateFormat")
 public class ChatMain extends Activity {
 	// chat_main
 	private final String TAG = "tag";
@@ -49,6 +50,8 @@ public class ChatMain extends Activity {
 	private List<ChatMsgEntity> mDataArrays;
 	private InputMethodManager manager;
 	private String herName;
+	private String myOrder;
+	private Chat chat;
 
 	// kkloyy@kkloyy-Dell-System-Inspiron-N4110
 	// nzp9dotjpm0v1zd
@@ -60,6 +63,7 @@ public class ChatMain extends Activity {
 
 		Intent intent = getIntent();
 		herName = intent.getStringExtra("herName");
+		myOrder = intent.getStringExtra("myOrder");
 
 		chat_window = (ListView) findViewById(R.id.chat_window);
 		chat_editmessage = (EditText) findViewById(R.id.chat_editmessage);
@@ -72,7 +76,20 @@ public class ChatMain extends Activity {
 
 		manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
+		mConnection = Constants.connectNetwork.connection;
+		chatManager = mConnection.getChatManager();
+
 		new Thread(runnable).start();
+
+		chat = chatManager.createChat(herName + "@nzp9dotjpm0v1zd",
+				new MessageListener() {
+					@Override
+					public void processMessage(Chat arg0, Message arg1) {
+						System.out.println(arg1.getBody());
+					}
+				});
+
+		sendMessage(myOrder);
 
 		chat_send.setOnClickListener(new View.OnClickListener() {
 
@@ -85,43 +102,7 @@ public class ChatMain extends Activity {
 							Toast.LENGTH_SHORT * 5).show();
 					return;
 				}
-				SimpleDateFormat format = new SimpleDateFormat(
-						"yyyy-MM-dd hh:mm:ss");
-
-				ChatMsgEntity entity = new ChatMsgEntity();
-				entity.setUsername(Constants.username);
-				entity.setSendtime(format.format(new Date()));
-				entity.setMessage(chat_editmessage.getText().toString());
-				entity.setMsgType(false);
-
-				mDataArrays.add(entity);
-				// adapter.notifyDataSetChanged();
-
-				// sendAdapter = new SimpleAdapter(ChatMain.this, sendData(),
-				// R.layout.chatting_item_msg_text_right, new String[] {
-				// "time", "msg", "sender" }, new int[] {
-				// R.id.tv_sendtime_r, R.id.tv_chatcontent_r,
-				// R.id.tv_username_r });
-				// dialog_window.setAdapter(sendAdapter);
-
-				adapter.notifyDataSetChanged();
-				chat_window.setSelection(adapter.getCount());
-
-				Chat chat = chatManager.createChat("kkloyy@nzp9dotjpm0v1zd",
-						new MessageListener() {
-							@Override
-							public void processMessage(Chat arg0, Message arg1) {
-								System.out.println(arg1.getBody());
-							}
-						});
-				try {
-					chat.sendMessage(chat_editmessage.getText().toString());
-					chat_editmessage.setText(null);
-				} catch (XMPPException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
+				sendMessage(chat_editmessage.getText().toString());
 			}
 
 		});
@@ -137,9 +118,6 @@ public class ChatMain extends Activity {
 
 	Runnable runnable = new Runnable() {
 		public void run() {
-			mConnection = Constants.connectNetwork.connection;
-
-			chatManager = mConnection.getChatManager();
 			chatManager.addChatListener(new ChatManagerListener() {
 				@Override
 				public void chatCreated(Chat chat, boolean arg1) {
@@ -147,16 +125,7 @@ public class ChatMain extends Activity {
 						@SuppressLint("SimpleDateFormat")
 						@Override
 						public void processMessage(Chat arg0, Message arg1) {
-							System.out.println("�յ�����Ϣ: " + arg1.getBody());
 							message = arg1.getBody();
-							// textView.post(new Runnable() {
-							//
-							// @Override
-							// public void run() {
-							// // TODO Auto-generated method stub
-							// textView.setText(message);
-							// }
-							// });
 
 							if (message != null) {
 								SimpleDateFormat format = new SimpleDateFormat(
@@ -240,6 +209,35 @@ public class ChatMain extends Activity {
 			}
 		}
 		return super.onTouchEvent(event);
+	}
+
+	private void sendMessage(String message) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+		ChatMsgEntity entity = new ChatMsgEntity();
+		entity.setUsername(Constants.username);
+		entity.setSendtime(format.format(new Date()));
+		entity.setMessage(message);
+		entity.setMsgType(false);
+
+		mDataArrays.add(entity);
+
+		adapter.notifyDataSetChanged();
+		chat_window.setSelection(adapter.getCount());
+
+		try {
+			chat.sendMessage(message);
+			chat_editmessage.setText(null);
+		} catch (XMPPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (getCurrentFocus() != null
+				&& getCurrentFocus().getWindowToken() != null) {
+			manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+					InputMethodManager.HIDE_NOT_ALWAYS);
+		}
 	}
 
 }

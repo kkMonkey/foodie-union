@@ -78,20 +78,20 @@ public class OrderAdapter extends BaseAdapter {
 		return convertView;
 	}
 
-	public static HashMap<Integer, Boolean> getIsSelected() {
-		return isSelected;
-	}
-
-	public static void setIsSelected(HashMap<Integer, Boolean> isSelected) {
-		OrderAdapter.isSelected = isSelected;
-	}
+	// public static HashMap<Integer, Boolean> getIsSelected() {
+	// return isSelected;
+	// }
+	//
+	// public static void setIsSelected(HashMap<Integer, Boolean> isSelected) {
+	// OrderAdapter.isSelected = isSelected;
+	// }
 
 	@SuppressLint("UseSparseArrays")
 	public static void recovery() {
 		isSelected = new HashMap<Integer, Boolean>();
 		for (int i = 0; i < mData.size(); i++) {
 			isSelected.put(i, false);
-			mData.get(i).put("count", R.string.orderinitialvalue);
+			mData.get(i).put("count", 0);
 		}
 	}
 

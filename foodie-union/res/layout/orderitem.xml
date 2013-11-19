@@ -25,15 +25,13 @@
         android:focusableInTouchMode="false"
         android:inputType="number"
         android:text="@string/orderinitialvalue" >
-
-        <requestFocus />
     </EditText>
 
     <View
         android:id="@+id/orderitem_view"
         android:layout_width="1dp"
-        android:layout_height="fill_parent"
-        android:layout_toRightOf="@+id/orderitem_editText"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/orderitem_editText"
         android:background="#ff00ff" >
     </View>
 
@@ -43,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_toLeftOf="@id/orderitem_view"
-        android:layout_toRightOf="@+id/orderitem_checkBox"
+        android:layout_toRightOf="@id/orderitem_checkBox"
         android:text="@string/ordername" />
 
 </RelativeLayout>

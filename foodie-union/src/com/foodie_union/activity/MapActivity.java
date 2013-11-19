@@ -1,4 +1,3 @@
-
 package com.foodie_union.activity;
 
 import java.util.HashMap;
@@ -12,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,7 +40,6 @@ public class MapActivity extends Activity {
 	Map<Integer, Button> buttonMap = null;
 	int nameID, searchSize = 18;
 	Spinner spinner = null;
-	private static final String[] m = { "火锅", "干锅", "小炒", "小吃", "奶茶" };
 	private ArrayAdapter<String> adapter;
 
 	@SuppressLint("UseSparseArrays")
@@ -48,7 +47,7 @@ public class MapActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mBMapMan = new BMapManager(getApplication());
-		mBMapMan.init("DAe898e05ef75f7019f834b183c19d6d", null);
+		mBMapMan.init("7a94583384b6852b009181a404f9ccbb", null);
 		// 注锟解：锟斤拷锟斤拷锟斤拷锟斤拷setContentView前锟斤拷始锟斤拷BMapManager锟斤拷锟襟，凤拷锟斤拷岜拷锟�
 		setContentView(R.layout.mappage);
 		mMapView = (MapView) findViewById(R.id.bmapsView);
@@ -59,7 +58,7 @@ public class MapActivity extends Activity {
 		spinner = (Spinner) findViewById(R.id.spinner1);
 		// 将可选内容与ArrayAdapter连接起来
 		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, m);
+				android.R.layout.simple_spinner_item, Constants.TYPE_FILTER);
 
 		// 设置下拉列表的风格
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -133,6 +132,7 @@ public class MapActivity extends Activity {
 		});
 
 		buttonMap = new HashMap<Integer, Button>();
+
 		// 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟矫碉拷锟斤拷锟脚控硷拷
 		MapController mMapController = mMapView.getController();
 		// 锟矫碉拷mMapView锟侥匡拷锟斤拷权,锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷坪锟斤拷锟狡斤拷坪锟斤拷锟斤拷锟�
@@ -156,18 +156,18 @@ public class MapActivity extends Activity {
 
 			protected boolean onTap(int index) {
 				// 锟节此达拷锟斤拷item锟斤拷锟斤拷录锟�
-				return false;
+
+				Intent intent = new Intent(MapActivity.this, OrderPage.class);
+				intent.putExtra("index", index);
+				Log.v("index", String.valueOf(index));
+				startActivity(intent);
+				return true;
 			}
 
 			public boolean onTap(GeoPoint pt, MapView mapView) {
 				// 锟节此达拷锟斤拷MapView锟侥碉拷锟斤拷录锟斤拷锟斤拷锟斤拷锟斤拷锟�true时
 				super.onTap(pt, mapView);
-
-				Intent intent = new Intent(MapActivity.this, OrderPage.class);
-				intent.putExtra("shopKeeperLon", pt.getLongitudeE6());
-				intent.putExtra("shopKeeperLat", pt.getLatitudeE6());
-				startActivity(intent);
-				return true;
+				return false;
 			}
 			// 锟斤拷2.1.1 锟斤拷始锟斤拷使锟斤拷 add/remove 锟斤拷锟斤拷overlay ,
 			// 锟斤拷锟斤拷锟斤拷写锟斤拷锟铰接匡拷
@@ -196,12 +196,11 @@ public class MapActivity extends Activity {
 		GeoPoint p3 = new GeoPoint((int) (mLat3 * 1E6), (int) (mLon3 * 1E6));
 		// 准锟斤拷overlay图锟斤拷锟斤拷荩锟斤拷锟斤拷实锟斤拷锟斤拷锟斤拷薷锟�
 		// Drawable mark = getResources().getDrawable(R.drawable.icon_marka);
-		Drawable mark = getResources().getDrawable(R.drawable.ic_launcher);
+		Drawable mark = getResources().getDrawable(R.drawable.mapmarker);
 		// 锟斤拷OverlayItem准锟斤拷Overlay锟斤拷锟�
+
 		OverlayItem item1 = new OverlayItem(p1, "item1", "item1");
-		// 使锟斤拷setMarker()锟斤拷锟斤拷锟斤拷锟斤拷overlay图片,锟斤拷锟斤拷锟斤拷锟斤拷锟绞癸拷霉锟斤拷锟絀temizedOverlay时锟斤拷默锟斤拷锟斤拷锟斤拷
 		OverlayItem item2 = new OverlayItem(p2, "item2", "item2");
-		item2.setMarker(mark);
 		OverlayItem item3 = new OverlayItem(p3, "item3", "item3");
 
 		// 锟斤拷锟斤拷IteminizedOverlay
@@ -214,8 +213,8 @@ public class MapActivity extends Activity {
 		// 锟斤拷锟斤拷锟斤拷锟斤拷准锟斤拷锟斤拷锟斤拷锟斤拷准锟斤拷锟矫ｏ拷使锟斤拷锟斤拷锟铰凤拷锟斤拷锟斤拷锟斤拷overlay.
 		// 锟斤拷锟給verlay,
 		// 锟斤拷锟斤拷锟斤拷锟斤拷锟絆verlay时使锟斤拷addItem(List<OverlayItem>)效锟绞革拷锟�
-		itemOverlay.addItem(item1);
 		itemOverlay.addItem(item2);
+		itemOverlay.addItem(item1);
 		itemOverlay.addItem(item3);
 		mMapView.refresh();
 		mMapView.invalidate();

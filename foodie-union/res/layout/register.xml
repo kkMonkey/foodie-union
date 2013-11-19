@@ -2,36 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_register"
     android:orientation="vertical" >
-    
-    <LinearLayout
-        android:id="@+id/register_layout4"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
-
-        <TextView
-            android:id="@+id/register_textview"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:text="@string/password2" />
-
-        <EditText
-            android:id="@+id/register_password2"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="textPassword" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/register_layout1"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/register_layout4"
-        android:layout_marginBottom="30dp">
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="30dp" >
 
         <TextView
             android:id="@+id/register_textview1"
@@ -54,9 +34,9 @@
         android:id="@+id/register_layout2"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_above="@id/register_layout1"
-        android:layout_marginBottom="30dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp" >
 
         <TextView
             android:id="@+id/register_textview2"
@@ -69,31 +49,68 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10" 
-            android:inputType="textMultiLine"/>"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/register_layout4"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_layout1"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/register_textview"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:text="@string/password2" />
+
+        <EditText
+            android:id="@+id/register_password2"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPassword" />
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/register_layout3"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/register_layout4"
-        android:layout_marginTop="30dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" >
 
         <Button
             android:id="@+id/register_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:text="@string/register" />
+            android:background="@drawable/register_button" />
 
         <Button
             android:id="@+id/register_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="@string/thereturn" />
+            android:background="@drawable/goback_button" />
     </RelativeLayout>
+    
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/register_layout2"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="欢迎注册\n\n        吃货联盟"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="30dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

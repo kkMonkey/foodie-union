@@ -1,17 +1,25 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LinearLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/chat_textview1"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:text="@string/chat_shopname"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <ListView
         android:id="@+id/chat_window"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@id/chat_textview1"
         android:layout_marginLeft="10.0dip"
         android:layout_marginRight="10.0dip"
         android:layout_marginTop="10.0dip"
-        android:layout_weight="10"
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:dividerHeight="5dp"
@@ -23,7 +31,7 @@
         android:id="@+id/chat_bottom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.8"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/layout_bg1" >
 
         <Button
@@ -50,4 +58,4 @@
             android:textSize="18sp" />
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -39,11 +39,11 @@ public class OrderPage extends Activity {
 		clearButton = (Button) findViewById(R.id.orderpage_clear);
 		watchButton = (Button) findViewById(R.id.orderpage_watch);
 		confirmButton = (Button) findViewById(R.id.orderpage_confirm);
-		
-		Intent intent=new Intent();
-		double shopKeeperLon=intent.getIntExtra("shopKeeperLon", 0);
-		double shopKeeperLat=intent.getIntExtra("shopKeeperLat", 0);
-		shopKeeperName="我是店家";
+
+		Intent intent = new Intent();
+		double shopKeeperLon = intent.getIntExtra("shopKeeperLon", 0);
+		double shopKeeperLat = intent.getIntExtra("shopKeeperLat", 0);
+		shopKeeperName = "我是店家";
 
 		adapter = new OrderAdapter(getData(), this);
 		listView.setAdapter(adapter);
@@ -71,8 +71,7 @@ public class OrderPage extends Activity {
 							OrderPage.this);
 					builder.setTitle("订单")
 							.setIcon(android.R.drawable.ic_dialog_info)
-							.setView(inputServer)
-							.setNegativeButton("取消", null);
+							.setView(inputServer).setNegativeButton("取消", null);
 					builder.setPositiveButton("确定",
 							new DialogInterface.OnClickListener() {
 
@@ -81,19 +80,19 @@ public class OrderPage extends Activity {
 									OrderAdapter.setCount(Integer
 											.parseInt(inputServer.getText()
 													.toString()), myPosition);
+									OrderAdapter.isSelected.put(myPosition,
+											!OrderAdapter.isSelected
+													.get(myPosition));
 									adapter.notifyDataSetChanged();
 
-									OrderAdapter.isSelected.put(myPosition,
-											vHollder.checkBox.isChecked());
 								}
 							});
 					builder.show();
 				} else {
-					OrderAdapter.setCount(R.string.orderinitialvalue,
-							myPosition);
-					adapter.notifyDataSetChanged();
+					OrderAdapter.setCount(0, myPosition);
 					OrderAdapter.isSelected.put(myPosition,
-							vHollder.checkBox.isChecked());
+							!OrderAdapter.isSelected.get(myPosition));
+					adapter.notifyDataSetChanged();
 				}
 			}
 		});
@@ -110,88 +109,88 @@ public class OrderPage extends Activity {
 		Map<String, Object> map;
 
 		map = new HashMap<String, Object>();
-		map.put("ischecked", true);
-		map.put("orderName", "小炒牛肉1");
-		map.put("count", 0);
-		list.add(map);
-
-		map = new HashMap<String, Object>();
-		map.put("ischecked", true);
-		map.put("orderName", "小炒鸡肉1");
-		map.put("count", 0);
-		list.add(map);
-
-		map = new HashMap<String, Object>();
-		map.put("ischecked", true);
-		map.put("orderName", "小炒鸭肉1");
-		map.put("count", 0);
-		list.add(map);
-		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒牛肉2");
+		map.put("orderName", "粉蒸牛肉");
 		map.put("count", 0);
 		list.add(map);
 
 		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒鸡肉2");
+		map.put("orderName", "鱼香肉丝");
 		map.put("count", 0);
 		list.add(map);
 
 		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒鸭肉2");
+		map.put("orderName", "青椒炒肉");
 		map.put("count", 0);
 		list.add(map);
 		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒牛肉3");
-		map.put("count", 0);
-		list.add(map);
-
-		map = new HashMap<String, Object>();
-		map.put("ischecked", false);
-		map.put("orderName", "小炒鸡肉3");
+		map.put("orderName", "麻婆豆腐");
 		map.put("count", 0);
 		list.add(map);
 
 		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒鸭肉3");
-		map.put("count", 0);
-		list.add(map);
-		map = new HashMap<String, Object>();
-		map.put("ischecked", false);
-		map.put("orderName", "小炒牛肉4");
+		map.put("orderName", "番茄炒蛋");
 		map.put("count", 0);
 		list.add(map);
 
 		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒鸡肉4");
+		map.put("orderName", "黑椒牛柳");
+		map.put("count", 0);
+		list.add(map);
+		map = new HashMap<String, Object>();
+		map.put("ischecked", false);
+		map.put("orderName", "酸汤鱼");
 		map.put("count", 0);
 		list.add(map);
 
 		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒鸭肉4");
-		map.put("count", 0);
-		list.add(map);
-		map = new HashMap<String, Object>();
-		map.put("ischecked", false);
-		map.put("orderName", "小炒牛肉5");
+		map.put("orderName", "小炒茄子");
 		map.put("count", 0);
 		list.add(map);
 
 		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒鸡肉5");
+		map.put("orderName", "水煮肉片");
+		map.put("count", 0);
+		list.add(map);
+		map = new HashMap<String, Object>();
+		map.put("ischecked", false);
+		map.put("orderName", "红烧狮子头");
 		map.put("count", 0);
 		list.add(map);
 
 		map = new HashMap<String, Object>();
 		map.put("ischecked", false);
-		map.put("orderName", "小炒鸭肉5");
+		map.put("orderName", "红烧牛肉");
+		map.put("count", 0);
+		list.add(map);
+
+		map = new HashMap<String, Object>();
+		map.put("ischecked", false);
+		map.put("orderName", "糖醋鱼");
+		map.put("count", 0);
+		list.add(map);
+		map = new HashMap<String, Object>();
+		map.put("ischecked", false);
+		map.put("orderName", "泡椒牛肉");
+		map.put("count", 0);
+		list.add(map);
+
+		map = new HashMap<String, Object>();
+		map.put("ischecked", false);
+		map.put("orderName", "汽锅鸡");
+		map.put("count", 0);
+		list.add(map);
+
+		map = new HashMap<String, Object>();
+		map.put("ischecked", false);
+		map.put("orderName", "香菇炖鸡");
 		map.put("count", 0);
 		list.add(map);
 		return list;
@@ -258,7 +257,8 @@ public class OrderPage extends Activity {
 
 							public void onClick(DialogInterface dialog,
 									int which) {
-								Intent intent = new Intent(OrderPage.this, ChatMain.class);
+								Intent intent = new Intent(OrderPage.this,
+										ChatMain.class);
 								intent.putExtra("herName", shopKeeperName);
 								intent.putExtra("myOrder", "");
 								startActivity(intent);

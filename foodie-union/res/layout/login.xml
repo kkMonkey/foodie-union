@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/bg_login" >
 
     <LinearLayout
         android:id="@+id/login_layout1"
@@ -12,7 +13,7 @@
 
         <TextView
             android:id="@+id/login_textview1"
-            android:layout_width="72dp"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:text="@string/password" />
 
@@ -33,11 +34,11 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/login_layout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp" >
+        android:layout_marginBottom="20dp" >
 
         <TextView
             android:id="@+id/login_textview2"
-            android:layout_width="72dp"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:text="@string/username" />
 
@@ -49,6 +50,22 @@
             android:ems="10"
             android:inputType="text" />
     </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/login_layout2"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="30dp" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/login_layout3"
@@ -56,21 +73,21 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/login_layout1" 
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="35dp">
 
         <Button
             android:id="@+id/login_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:text="@string/login" />
+            android:background="@drawable/login_button" />
 
         <Button
             android:id="@+id/login_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="@string/thereturn" />
+            android:background="@drawable/register_button" />
     </RelativeLayout>
 
 </RelativeLayout>

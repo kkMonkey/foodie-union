@@ -7,7 +7,7 @@
     <string name="login">登录</string>
     <string name="thereturn">返回</string>
     <string name="username">用户名</string>
-    <string name="password">密码</string>
+    <string name="password">密码 </string>
     <string name="register">注册</string>
     <string name="password2">重复密码</string>
     <string name="ordername">菜名</string>
@@ -18,5 +18,9 @@
     <string name="orderpage_watch">查看订单</string>
     <string name="orderpage_confirm">确定</string>
     <string name="chat_main_send">发送</string>
+    <string name="chat_shopname">小店欢迎您</string>
+    <string name="chat_ordername">商品名称及单价</string>
+    <string name="chat_count">数量</string>
+    <string name="orderpage_init_value">0</string>
 
 </resources>
